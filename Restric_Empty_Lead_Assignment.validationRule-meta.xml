@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restric_Empty_Lead_Assignment</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISCHANGED(OwnerId),
+    $Profile.Name &lt;&gt; &quot;System Administrator&quot;,
+    $Profile.Name &lt;&gt; &quot;Contract Manager&quot;,
+    OR(
+        ISBLANK(Country),
+        ISBLANK(TEXT(LeadSource)),
+        ISBLANK(NumberOfEmployees)
+    )
+)</errorConditionFormula>
+    <errorMessage>Please fill Country, Lead Source and Number Of Employees to assign lead</errorMessage>
+</ValidationRule>
